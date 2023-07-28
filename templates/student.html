@@ -1,0 +1,57 @@
+{% extends  "base.html" %}
+
+{% block leftside %}
+        <ul>
+            <li class="first"><a href="#">学生信息录入</a></li>
+            <li><a href="{{ url_for('teacher') }}">选课信息录入</a></li>
+            <li><a href="/grade1">成绩信息录入</a></li>
+            <li><a href="/grade_infos">学生成绩查询</a></li>
+            <li><a href="/adminstator">系统管理员变动</a></li>
+        </ul>
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+        <h1 class="sub-header">学 生 信 息 录 入 系 统</h1>&nbsp;&nbsp;
+        <div class="table-responsive">
+        <hr>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>学号</th>
+                        <th>班级</th>
+                        <th>姓名</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <form action="" method="post">
+                            <td><input class="long" name="student_id" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td><input class="long" name="student_class" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td><input class="long" name="student_name"
+                                    type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </td>
+                            <td><input class="last" type="submit" value="提交" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                            <td><span >提交结果:{{insert_result}}</span></td>
+                        </form>
+                    </tr>
+                    <tr>
+                        <td>学生学号</td>
+                        <td>所属班级</td>
+                        <td>学生姓名</td>
+                    </tr>
+                    {% for result in results %}
+                    <tr>
+                        <td>{{result.student_id}}</td>
+                        <td>{{result.student_class}}</td>
+                        <td>{{result.student_name}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}
